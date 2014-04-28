@@ -830,6 +830,7 @@ rpl_join_instance(uip_ipaddr_t *from, rpl_dio_t *dio)
   rpl_dag_t *dag;
   rpl_parent_t *p;
   rpl_of_t *of;
+  int tx;
 
   dag = rpl_alloc_dag(dio->instance_id, &dio->dag_id);
   if(dag == NULL) {
@@ -1321,7 +1322,7 @@ void monitor_parents(void)
 
 
 	rpl_parent_t *pref_parent =(&instance_table[0])->current_dag->preferred_parent;
-	rpl_instance_t *instance=&instance_table[0];
+//	rpl_instance_t *instance=&instance_table[0];
 temp1 = ((((&instance_table[0])->current_dag->rank)%256)*100)/256;
 	printf("rank= %u.%u:{", (((&instance_table[0])->current_dag->rank)/256), temp1);
 	for(p = nbr_table_head(rpl_parents); p != NULL ;     p = nbr_table_next(rpl_parents, p))
