@@ -831,6 +831,9 @@ rpl_join_instance(uip_ipaddr_t *from, rpl_dio_t *dio)
   rpl_parent_t *p;
   rpl_of_t *of;
   int tx;
+  int coeff;
+ // int  transmission_power = { 0.003, 0.03, 0.1, 0.2, 0.3, 0.5, 0.8, 1};
+  //int consumption_power = { 25.5,  29.7,33.6,37.5,41.7,45.6, 49.5,52.2}
 
   dag = rpl_alloc_dag(dio->instance_id, &dio->dag_id);
   if(dag == NULL) {
@@ -875,36 +878,39 @@ rpl_join_instance(uip_ipaddr_t *from, rpl_dio_t *dio)
     // Sensor power consumption in mW are { 25.5,  29.7,33.6,37.5,41.7,45.6, 49.5,52.2}
     tx =cc2420_get_txpower();
     printf("Power=%d \n",tx);
+
+    coeff = 1000;
+
     switch(tx) {
 
     case 3:
-    	dag->Tx = 0.003;
+    	dag->Tx = 0.003 * coeff;
     	break;
     case 7:
-    	dag->Tx = 0.03;
+    	dag->Tx = 0.03 * coeff;
     	break;
     case 11:
-    	dag->Tx = 0.1;
+    	dag->Tx = 0.1 * coeff;
     	break;
 
     case 15:
-    	dag->Tx = 0.2;
+    	dag->Tx = 0.2* coeff;
     	break;
 
     case 19:
-    	dag->Tx = 0.3;
+    	dag->Tx = 0.3* coeff;
     	break;
 
     case 23:
-    	dag->Tx = 0.5;
+    	dag->Tx = 0.5* coeff;
     	break;
 
     case 27:
-    	dag->Tx = 0.8;
+    	dag->Tx = 0.8* 1000;
     	break;
 
     case 31:
-    	dag->Tx = 1;
+    	dag->Tx = 1* 1000;
 
     }
 

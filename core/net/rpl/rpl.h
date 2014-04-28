@@ -144,7 +144,7 @@ struct rpl_dag {
   struct rpl_instance *instance;
   LIST_STRUCT(parents);
   rpl_prefix_t prefix_info;
-  float Tx;
+  int Tx;
 };
 typedef struct rpl_dag rpl_dag_t;
 typedef struct rpl_instance rpl_instance_t;
