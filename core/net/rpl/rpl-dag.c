@@ -1278,7 +1278,7 @@ void monitor_parents(void)
 	uip_ipaddr_t *dest;
  uint16_t temp1,temp2;
 
-counter++;
+
 	rpl_parent_t *pref_parent =(&instance_table[0])->current_dag->preferred_parent;
 	rpl_instance_t *instance=&instance_table[0];
 temp1 = ((((&instance_table[0])->current_dag->rank)%256)*100)/256;
