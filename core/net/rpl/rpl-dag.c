@@ -879,38 +879,38 @@ rpl_join_instance(uip_ipaddr_t *from, rpl_dio_t *dio)
     tx =cc2420_get_txpower();
     printf("Power=%d \n",tx);
 
-    coeff = 1000;
+    coeff = 8;
 
     switch(tx) {
 
     case 3:
-    	dag->Tx = 0.003 * coeff;
+    	dag->Tx = 25.5 * coeff;
     	break;
     case 7:
-    	dag->Tx = 0.03 * coeff;
+    	dag->Tx = 29.7 * coeff;
     	break;
     case 11:
-    	dag->Tx = 0.1 * coeff;
+    	dag->Tx = 33.6 * coeff;
     	break;
 
     case 15:
-    	dag->Tx = 0.2* coeff;
+    	dag->Tx = 37.5* coeff;
     	break;
 
     case 19:
-    	dag->Tx = 0.3* coeff;
+    	dag->Tx = 41.7* coeff;
     	break;
 
     case 23:
-    	dag->Tx = 0.5* coeff;
+    	dag->Tx = 45.6* coeff;
     	break;
 
     case 27:
-    	dag->Tx = 0.8* 1000;
+    	dag->Tx = 49.5* 1000;
     	break;
 
     case 31:
-    	dag->Tx = 1* 1000;
+    	dag->Tx = 52.2* 1000;
 
     }
 
