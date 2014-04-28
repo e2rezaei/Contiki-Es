@@ -868,6 +868,47 @@ rpl_join_instance(uip_ipaddr_t *from, rpl_dio_t *dio)
     check_prefix(NULL, &dio->prefix_info);
   }
 
+  //-----------------elnaz--------
+    // Transmission power levels in CC2420{3    , 7       , 11       , 15      , 19      , 23      , 27      ,31       }
+    // Transmission power in mW are       { 0.003, 0.03, 0.1, 0.2, 0.3, 0.5, 0.8, 1}
+    // Sensor power consumption in mW are { 25.5,  29.7,33.6,37.5,41.7,45.6, 49.5,52.2}
+    tx =cc2420_get_txpower();
+    printf("Power=%d \n",tx);
+    switch(tx) {
+
+    case 3:
+    	dag->Tx = 0.003;
+    	break;
+    case 7:
+    	dag->Tx = 0.03;
+    	break;
+    case 11:
+    	dag->Tx = 0.1;
+    	break;
+
+    case 15:
+    	dag->Tx = 0.2;
+    	break;
+
+    case 19:
+    	dag->Tx = 0.3;
+    	break;
+
+    case 23:
+    	dag->Tx = 0.5;
+    	break;
+
+    case 27:
+    	dag->Tx = 0.8;
+    	break;
+
+    case 31:
+    	dag->Tx = 1;
+
+    }
+
+    //------------
+
   dag->joined = 1;
   dag->preference = dio->preference;
   dag->grounded = dio->grounded;
