@@ -88,6 +88,8 @@ typedef uint16_t rpl_path_metric_t;
 static rpl_path_metric_t
 calculate_path_metric(rpl_parent_t *p)
 {
+  rpl_dag_t *dag=p->dag;
+
   if(p == NULL) {
     return MAX_PATH_COST * RPL_DAG_MC_ETX_DIVISOR;
   }
