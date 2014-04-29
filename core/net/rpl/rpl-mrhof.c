@@ -72,7 +72,7 @@ rpl_of_t rpl_mrhof = {
 #define ETX_ALPHA   90
 
 /* Reject parents that have a higher link metric than the following. */
-#define MAX_LINK_METRIC			10
+#define MAX_LINK_METRIC			9
 
 /* Reject parents that have a higher path cost than the following. */
 #define MAX_PATH_COST			100
