@@ -85,6 +85,8 @@ rpl_of_t rpl_mrhof = {
 
 typedef uint16_t rpl_path_metric_t;
 
+#define Rx_power 56.4
+
 static rpl_path_metric_t
 calculate_path_metric(rpl_parent_t *p)
 {

@@ -906,11 +906,11 @@ rpl_join_instance(uip_ipaddr_t *from, rpl_dio_t *dio)
     	break;
 
     case 27:
-    	dag->Tx = 49.5* 1000;
+    	dag->Tx = 49.5* coeff;
     	break;
 
     case 31:
-    	dag->Tx = 52.2* 1000;
+    	dag->Tx = 52.2* coeff;
 
     }
 
@@ -1337,9 +1337,9 @@ temp1 = ((((&instance_table[0])->current_dag->rank)%256)*100)/256;
 		if(p==pref_parent)
 			printf("pref-prnt ");
 		printf("%02x ", ((uint8_t *)dest)[15]);
-temp1 = ((p->link_metric%128)*100)/128;
+temp1 = ((p->link_metric%RPL_DAG_MC_ETX_DIVISOR)*100)/RPL_DAG_MC_ETX_DIVISOR;
 temp2 = ((p->rank%256)*100)/256;
-		printf(" etx=%d.%2d,rank=%u.%2u)", p->link_metric/128, temp1 ,p->rank/256 , temp2);
+		printf(" etx=%d.%2d,rank=%u.%2u)", p->link_metric/RPL_DAG_MC_ETX_DIVISOR, temp1 ,p->rank/256 , temp2);
 //printf("%d- etx=%d.%2d,rank=%u.%2u)", counter, p->link_metric/128, temp1 ,p->rank/256 , temp2);
 //printf("%d   %d.%2d \n", counter, p->link_metric/128, temp1);
 		  /*PRINTF("RPL: My path ETX to the root is %u.%u\n",
