@@ -1330,7 +1330,7 @@ void monitor_parents(void)
 	rpl_parent_t *pref_parent =(&instance_table[0])->current_dag->preferred_parent;
 //	rpl_instance_t *instance=&instance_table[0];
 temp1 = ((((&instance_table[0])->current_dag->rank)%256)*100)/256;
-	printf("rank= %u.%u:{", (((&instance_table[0])->current_dag->rank)/256), temp1);
+	printf("rank= %u.%u(%u):{", (((&instance_table[0])->current_dag->rank)/256), temp1, (&instance_table[0])->current_dag->rank);
 	for(p = nbr_table_head(rpl_parents); p != NULL ;     p = nbr_table_next(rpl_parents, p))
 	{	dest=rpl_get_parent_ipaddr(p);
 		printf("(");
