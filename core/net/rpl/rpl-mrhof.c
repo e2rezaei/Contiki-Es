@@ -72,7 +72,7 @@ rpl_of_t rpl_mrhof = {
 #define ETX_ALPHA   90
 
 /* Reject parents that have a higher link metric than the following. */
-#define MAX_LINK_METRIC			9
+#define MAX_LINK_METRIC			10
 
 /* Reject parents that have a higher path cost than the following. */
 #define MAX_PATH_COST			100
@@ -97,11 +97,11 @@ calculate_path_metric(rpl_parent_t *p)
   }
 
 #if RPL_DAG_MC == RPL_DAG_MC_NONE
-  return p->rank + (dag->Tx*(uint16_t)p->link_metric);//elnaz
+  return p->rank + (dag->Tx*(uint16_t)p->link_metric)/25;//elnaz
 #elif RPL_DAG_MC == RPL_DAG_MC_ETX
-  return p->mc.obj.etx + (dag->Tx*(uint16_t)p->link_metric);//elnaz
+  return p->mc.obj.etx + (dag->Tx*(uint16_t)p->link_metric)/25;//elnaz
 #elif RPL_DAG_MC == RPL_DAG_MC_ENERGY
-  return p->mc.obj.energy.energy_est + (dag->Tx*((uint16_t)p->link_metric));//elnaz
+  return p->mc.obj.energy.energy_est + (dag->Tx*((uint16_t)p->link_metric))/25;//elnaz
 #else
 #error "Unsupported RPL_DAG_MC configured. See rpl.h."
 #endif /* RPL_DAG_MC */
@@ -151,9 +151,9 @@ calculate_rank(rpl_parent_t *p, rpl_rank_t base_rank)
     if(base_rank == 0) {
       return INFINITE_RANK;
     }
-    rank_increase = RPL_INIT_LINK_METRIC * RPL_DAG_MC_ETX_DIVISOR *(dag->Tx) ;
+    rank_increase = (RPL_INIT_LINK_METRIC * RPL_DAG_MC_ETX_DIVISOR *(dag->Tx))/25 ;
   } else {
-    rank_increase = p->link_metric *(dag->Tx) ;
+    rank_increase = (p->link_metric *(dag->Tx))/25 ;
     if(base_rank == 0) {
       base_rank = p->rank;
     }

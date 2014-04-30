@@ -884,33 +884,33 @@ rpl_join_instance(uip_ipaddr_t *from, rpl_dio_t *dio)
     switch(tx) {
 
     case 3:
-    	dag->Tx = 25.5 * coeff;
+    	dag->Tx = 25;//25.5 * coeff;
     	break;
     case 7:
-    	dag->Tx = 29.7 * coeff;
+    	dag->Tx = 30;//29.7 * coeff;
     	break;
     case 11:
-    	dag->Tx = 33.6 * coeff;
+    	dag->Tx = 34;//33.6 * coeff;
     	break;
 
     case 15:
-    	dag->Tx = 37.5* coeff;
+    	dag->Tx = 37;//37.5* coeff;
     	break;
 
     case 19:
-    	dag->Tx = 41.7* coeff;
+    	dag->Tx = 42; //41.7* coeff;
     	break;
 
     case 23:
-    	dag->Tx = 45.6* coeff;
+    	dag->Tx = 46; //45.6* coeff;
     	break;
 
     case 27:
-    	dag->Tx = 49.5* coeff;
+    	dag->Tx = 49; //49.5* coeff;
     	break;
 
     case 31:
-    	dag->Tx = 52.2* coeff;
+    	dag->Tx = 52; //52.2* coeff;
 
     }
 
