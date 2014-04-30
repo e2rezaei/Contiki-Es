@@ -26,7 +26,7 @@
  * This file is part of the Contiki operating system.
  *
  */
-#include "dev/cc2420.h"//elnaz
+
 #include "contiki.h"
 #include "lib/random.h"
 #include "sys/ctimer.h"
@@ -34,9 +34,9 @@
 #include "net/uip-ds6.h"
 #include "net/uip-udp-packet.h"
 #include "sys/ctimer.h"
-
+#ifdef WITH_COMPOWER
 #include "powertrace.h"
-
+#endif
 #include <stdio.h>
 #include <string.h>
 
@@ -152,9 +152,7 @@ PROCESS_THREAD(udp_client_process, ev, data)
 #endif
 
   PROCESS_BEGIN();
- powertrace_start(CLOCK_SECOND * 2); //elnaz
-cc2420_set_txpower(31);
-printf("Tx=%d\n", cc2420_get_txpower());
+cc2420_set_txpower(11);
   PROCESS_PAUSE();
 
   set_global_address();
